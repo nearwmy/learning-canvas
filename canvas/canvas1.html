@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d模型</title>
+	<style type="text/css">
+		#webgl{
+			background-color: pink
+		}
+	</style>
+	
+</head>
+<body>
+	<canvas id="webgl" width="400" height="200"></canvas>
+	<script type="text/javascript">
+	//获取canvas元素
+		var canvas=document.getElementById('webgl');
+	//获取上下文
+		var canvasDom=canvas.getContext('2d');
+	//绘制线样式，颜色
+		//canvasDom.strokeStyle='red';
+	//图片位置，宽高
+		//canvasDom.strokeRect(10,10,190,100);
+	//填充矩形
+		canvasDom.fillStyle='blue';
+	//填充矩形位置，宽高
+		//anvasDom.fillRect(10,110,100,110);
+		canvasDom.beginPath();
+		//moveto x:20 y:20
+		canvasDom.moveTo(20,20);
+		// lineTo x:200 y:20
+		canvasDom.lineTo(200,20);
+		canvasDom.lineTo(100,40);
+		//闭合图形
+		canvasDom.closePath();
+		//线条长度
+		canvasDom.lineToWidth=2.0;
+		// 线条颜色
+		canvasDom.strokeStyle='red';
+		canvasDom.stroke();	
+
+		
+		//绘制圆形
+		canvasDom.moveTo(20,50);
+		// 设置填充颜色
+		canvasDom.fillStyle="#FF0000";
+		// 开始绘制
+		canvasDom.beginPath();
+		// 圆的中心点位置 半径
+		canvasDom.arc(70,18,15,0,Math.PI*2,true);
+		//回到原点
+		canvasDom.closePath();
+		//填充颜色
+		canvasDom.fill();	
+	</script>
+</body>
+</html>
