@@ -5,53 +5,119 @@
 	<title>3d模型</title>
 	<style type="text/css">
 		#webgl{
-			background-color: pink
+			/*background-color: pink;*/
 		}
 	</style>
 	
 </head>
 <body>
-	<canvas id="webgl" width="400" height="200"></canvas>
+	<canvas id="webgl" width="800" height="800"></canvas>
+
 	<script type="text/javascript">
 	//获取canvas元素
 		var canvas=document.getElementById('webgl');
+		var cans=document.getElementById('webgl2');
 	//获取上下文
 		var canvasDom=canvas.getContext('2d');
 	//绘制线样式，颜色
-		//canvasDom.strokeStyle='red';
-	//图片位置，宽高
-		//canvasDom.strokeRect(10,10,190,100);
-	//填充矩形
-		canvasDom.fillStyle='blue';
-	//填充矩形位置，宽高
-		//anvasDom.fillRect(10,110,100,110);
-		canvasDom.beginPath();
-		//moveto x:20 y:20
-		canvasDom.moveTo(20,20);
-		// lineTo x:200 y:20
-		canvasDom.lineTo(200,20);
-		canvasDom.lineTo(100,40);
-		//闭合图形
-		canvasDom.closePath();
-		//线条长度
-		canvasDom.lineToWidth=2.0;
-		// 线条颜色
 		canvasDom.strokeStyle='red';
-		canvasDom.stroke();	
+		canvasDom.strokeText('线条',35,35);
+	//图片位置，宽高
+		canvasDom.strokeRect(10,10,110,110);
+
+
+	//填充矩形
+		canvasDom.fillRect(130,10,110,110);
+		canvasDom.fillStyle='blue';
+
+	//填充矩形位置，宽高
+		// 线条渐变颜色
+		var a=canvasDom.createLinearGradient(250,10,340,10);
+		a.addColorStop(0,'red');
+		a.addColorStop(0.5,'yellow');
+		a.addColorStop(1,'green');
+		canvasDom.strokeStyle=a;
+		canvasDom.lineToWidth=2.0;
+		canvasDom.strokeRect(250,10,340,10);	
 
 		
 		//绘制圆形
-		canvasDom.moveTo(20,50);
+		canvasDom.moveTo(50,50);
 		// 设置填充颜色
-		canvasDom.fillStyle="#FF0000";
+		canvasDom.fillStyle="#FF00ff";
 		// 开始绘制
 		canvasDom.beginPath();
 		// 圆的中心点位置 半径
-		canvasDom.arc(70,18,15,0,Math.PI*2,true);
+		// canvasDom.arc(50,150,30,0,Math.PI*2,true);
+		// canvasDom.arc(50,150,30,0,Math.PI,true);
+		// canvasDom.arc(50,150,30,0,Math.PI/2,true);
+		// canvasDom.arc(50,150,30,0,Math.PI/2,false);
+		// canvasDom.arc(50,150,30,0,Math.PI,false);
+		canvasDom.arc(50,150,30,0,Math.PI/3,true);
 		//回到原点
 		canvasDom.closePath();
 		//填充颜色
 		canvasDom.fill();	
+
+		//绘制渐变矩形
+		var b=canvasDom.createLinearGradient(90,120,190,120);
+		b.addColorStop(0,'blue');
+		b.addColorStop(0.5,'red');
+		b.addColorStop(1,'yellow');
+		canvasDom.fillStyle=b;
+		canvasDom.fillRect(90,120,100,100);
+
+		//绘制渐变圆形
+		 var c=canvasDom.createRadialGradient(240,140,10,240,160,40);
+		 c.addColorStop(0,'red');
+		 c.addColorStop(0.5,'green');
+		 c.addColorStop(1,'blue');
+
+		 canvasDom.fillStyle=c;
+		 canvasDom.fillRect(200,120,100,100);
+
+		//绘制图像
+		 // canvasDom.beginPath();
+   //       canvasDom.arc(100, 300, 50, 0, Math.PI/8*3,Math.PI/8*1 );
+   //       canvasDom.fillStyle = 'rgba(255,0,0,0.25)';
+   //       canvasDom.fill();
+   //       canvasDom.strokeStyle = 'rgba(255,0,0,0.25)'
+   //       canvasDom.closePath();
+   //       canvasDom.stroke();
+         
+         //根据函数画图形  Math.PI计算圆周率
+          canvasDom.fillStyle = "#EEEEFF";
+             var n = 0;
+             var dx = 100;
+             var dy = 330;
+             var s = 100;
+             canvasDom.beginPath();
+             canvasDom.fillStyle = 'rgb(100,255,100)';
+             canvasDom.strokeStyle = 'rgb(0,0,100)';
+             var x = Math.sin(0);
+             var y = Math.cos(0);
+             var dig = Math.PI / 15 * 11;
+             for (var i = 0; i < 30; i++) {
+                 var x = Math.sin(i * dig);
+                 var y = Math.cos(i * dig);
+                 canvasDom.lineTo(dx + x * s, dy + y * s);
+             }
+             canvasDom.closePath();
+             canvasDom.fill();
+             canvasDom.stroke();
+ 		
+ 		//绘制立体图形
+         var g1 = canvasDom.createRadialGradient(300, 330, 0, 300, 330, 100);
+             g1.addColorStop(0.1, 'rgb(255,0,0)');  
+             g1.addColorStop(1, 'rgb(60,0,0)');
+             canvasDom.fillStyle = g1;
+             canvasDom.beginPath();
+             canvasDom.arc(300, 330, 100, Math.PI * 0, Math.PI * 2, true);
+             canvasDom.closePath();
+             canvasDom.fill();
+
+ 
+		
 	</script>
 </body>
 </html>
