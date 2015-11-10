@@ -1,2 +1,3 @@
 # learning-canvas
-学习阶段
+learning phase
+create some basic graphics based on canvas
